@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 //Add Dotenv
 require('dotenv').config();
@@ -20,14 +20,23 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@clu
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-function run() {
+async function run() {
     try {
         const servicesCollection = client.db('photoGal').collection('services');
 
         app.get('/services', async (req, res) => {
             const query = {};
-            const cursor = servicesCollection.find(query)
+            const cursor = servicesCollection.find(query);
             const services = await cursor.toArray();
+            const servicesReverse = await services.reverse();
+            const limitedServices = await servicesReverse.slice(0, 3)
+            res.send({ servicesReverse, limitedServices })
+        })
+
+        app.get('/service/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const services = await servicesCollection.findOne(query);
             res.send(services)
         })
 
