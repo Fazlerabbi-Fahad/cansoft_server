@@ -1,32 +1,19 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mongodb": "^4.11.0",
-    "mongoose": "^6.9.1"
-  },
-  "name": "photogal_server",
+  "name": "recycle_bin_furniture_server",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "16.x"
-  },
   "scripts": {
     "start": "node index.js",
-    "build": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Fazlerabbi-Fahad/photoGAL-server-side.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Fazlerabbi-Fahad/photoGAL-server-side/issues"
-  },
-  "homepage": "https://github.com/Fazlerabbi-Fahad/photoGAL-server-side#readme",
-  "description": ""
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^4.12.0"
+  }
 }
